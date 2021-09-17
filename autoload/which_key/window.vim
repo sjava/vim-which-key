@@ -115,7 +115,6 @@ function! s:show_floating_win(rows, layout) abort
   let opts = {
         \ 'row': &lines - nvim_buf_line_count(s:bufnr) - row_offset,
         \ 'height': a:layout.win_dim + 2,
-        \ 'style': 'minimal',
         \ }
 
   if !exists('s:origin_lnum_width')

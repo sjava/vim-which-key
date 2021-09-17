@@ -57,7 +57,11 @@ function! s:calc_layout(mappings) abort " {{{
     if g:which_key_floating_relative_win
       let winwidth = winwidth(g:which_key_origin_winid)
     else
-      let winwidth = &columns
+      if exists('g:which_key_floating_opts') && has_key(g:which_key_floating_opts,'width')
+        let winwidth =g:which_key_floating_opts['width']
+      else
+        let winwidth = &columns
+      endif
     endif
 
     if maxlength > winwidth
