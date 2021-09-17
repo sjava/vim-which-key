@@ -86,8 +86,13 @@ function! s:apply_custom_floating_opts(opts) abort
   let opts = a:opts
   if exists('g:which_key_floating_opts')
     for [key, val] in items(g:which_key_floating_opts)
-      if has_key(opts, key)
-        let opts[key] = opts[key] + eval('0'.val)
+      if key=='width'
+        let opts['col'] = (&columns - val)/2
+        let opts[key] = val
+      endif
+      if key=='height'
+        let opts['row'] = (&lines - val)/2
+        let opts[key] = val
       endif
     endfor
   endif
